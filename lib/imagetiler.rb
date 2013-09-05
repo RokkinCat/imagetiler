@@ -64,7 +64,7 @@ class Tiler
                     tile.resize!(TILE_SIZE,TILE_SIZE)
 
                     # output tile
-                    yield {:filename => "#{@prefix}_#{zoom}_#{col}_#{row}.#{@format}", :file => tile}
+                    yield({:filename => "#{@prefix}_#{zoom}_#{col}_#{row}.#{@format}", :file => tile})
                 end
             end
         end
