@@ -25,13 +25,14 @@ class Tiler
 
     TILE_SIZE = 256
 
-    attr_accessor :zoom_levels, :bg_color, :format, :prefix
+    attr_accessor :zoom_levels, :bg_color, :format, :prefix, :gravity
 
     def initialize()
         @zoom_levels = 0..4
         @bg_color = Magick::Pixel.new(255,255,255,Magick::TransparentOpacity)
         @format = "png"
         @prefix = "tile"
+        @gravity = Magick::CenterGravity
     end
 
     # image_source is an RMagick Image
@@ -88,6 +89,7 @@ class Tiler
         dim = calc_side_length(image)
 
         image.background_color = @bg_color
+        image.gravity = @gravity
 
         image.extent(dim, dim)
     end
